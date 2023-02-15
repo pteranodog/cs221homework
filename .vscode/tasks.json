@@ -8,11 +8,11 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"${workspaceFolder}\\src\\*.cpp", "${workspaceFolder}\\drivers\\${fileBasename}",
+				"${fileDirname}\\..\\src\\*.cpp", "${fileDirname}\\..\\drivers\\${fileBasename}",
 				"-o",
-				"${workspaceFolder}\\builds\\${fileBasenameNoExtension}.exe",
+				"${fileDirname}\\..\\builds\\${fileBasenameNoExtension}.exe",
 				"-I",
-    			"${workspaceFolder}\\headers"
+    			"${fileDirname}\\..\\headers"
 			],
 			"options": {
 				"cwd": "${fileDirname}"

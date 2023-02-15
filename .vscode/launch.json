@@ -8,7 +8,7 @@
             "name": "Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/builds/${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}/../builds/${fileBasenameNoExtension}.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "externalConsole": true

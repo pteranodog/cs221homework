@@ -25,5 +25,5 @@ public:
     ~ItemType();
     comparison Compare(int intToCompare);
     int GetData();
-    void SetData();
+    void SetData(int dataToSet);
 };

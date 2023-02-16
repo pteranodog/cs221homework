@@ -18,7 +18,7 @@ ItemType::ItemType(int newValue)
 
 ItemType::~ItemType()
 {
-    // Notthing is needed in a destructor if the class has no dynamic memory
+    // Nothing is needed in a destructor if the class has no dynamic memory
 }
 
 comparison ItemType::Compare(int intToCompare)

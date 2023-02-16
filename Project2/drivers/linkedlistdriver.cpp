@@ -1,53 +1,20 @@
 #include "ItemType.h"
 #include "Node.h"
 #include "USLList.h"
-#include <string>
 #include <iostream>
-
-void outputTestInt(int expected, int actual)
-{
-    if (expected == actual)
-    {
-        std::cout << "\033[32mPASS\033[0m\t";
-        std::cout << "Expected: " << expected << "\tActual: " << actual << std::endl;
-    }
-    else
-    {
-        std::cout << "\033[31mFAIL ->\033[0m\t";
-        std::cout << "Expected: " << expected << "\tActual: \033[31m" << actual << "\033[0m" << std::endl;
-    }
-}
-
-void outputTestFloat(float expected, float actual)
-{
-    if (abs(expected - actual) <= 0.01)
-    {
-        std::cout << "\033[32mPASS\033[0m\t";
-        std::cout << "Expected: " << expected << "\tActual: " << actual << std::endl;
-    }
-    else
-    {
-        std::cout << "\033[31mFAIL ->\t\033[0m";
-        std::cout << "Expected: " << expected << "\tActual: \033[31m" << actual << "\033[0m" << std::endl;
-    }
-}
-
-void outputTestString(std::string expected, std::string actual)
-{
-    if (expected == actual)
-    {
-        std::cout << "\033[32mPASS\033[0m\t";
-        std::cout << "Expected: " << expected << "\tActual: " << actual << std::endl;
-    }
-    else
-    {
-        std::cout << "\033[31mFAIL ->\033[0m\t";
-        std::cout << "Expected: " << expected << "\tActual: \033[31m" << actual << "\033[0m" << std::endl;
-    }
-}
 
 int main()
 {
+    ItemType item3 = ItemType(3);
+    USLList list;
+    list.PutItem(new ItemType(5));
+    list.PutItem(new ItemType(2));
+    list.PutItem(new ItemType(7));
+    list.PutItem(new ItemType(1));
+    list.PutItem(&item3);
+    std::cout << list.GetLength() << std::endl;
+    list.MakeEmpty();
+    
 
     system("pause");
     return 0;

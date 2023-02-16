@@ -6,6 +6,8 @@
 // Mrs. Delugach
 
 #pragma once
+#include "ItemType.h"
+#include "Node.h"
 
 class USLList
 {

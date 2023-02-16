@@ -23,9 +23,6 @@ Node::Node(ItemType newItem)
 Node::~Node()
 {
     delete item;
-    delete next;
-    item = nullptr;
-    next = nullptr;
 }
 
 void Node::SetNext(Node *nextNode)
@@ -41,4 +38,9 @@ ItemType Node::GetItem()
 Node *Node::Next()
 {
     return next;
+}
+
+ItemType *Node::GetItemPtr()
+{
+    return item;
 }

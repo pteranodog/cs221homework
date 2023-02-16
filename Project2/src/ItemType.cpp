@@ -4,13 +4,14 @@
 // By Drew Early 
 // for CS221-02 
 // Mrs. Delugach
+#include "ItemType.h"
 
 ItemType::ItemType()
 {
     data = 0;
 }
 
-ItemType::ItemType(int newValue);
+ItemType::ItemType(int newValue)
 {
     data = newValue;
 }
@@ -20,30 +21,30 @@ ItemType::~ItemType()
     // nothing here?
 }
 
-ItemType::Compare(int intToCompare)
+comparison ItemType::Compare(int intToCompare)
 {
     comparison result;
     if (intToCompare == data)
     {
-        result = EQUAL
+        result = EQUAL;
     }
     else if (intToCompare < data)
     {
-        result = LESS
+        result = LESS;
     }
     else
     {
-        result = GREATER
+        result = GREATER;
     }
     return result;
 }
 
-ItemType::GetData();
+int ItemType::GetData()
 {
     return data;
 }
 
-ItemType::SetData(int dataToSet)
+void ItemType::SetData(int dataToSet)
 {
     data = dataToSet;
 }

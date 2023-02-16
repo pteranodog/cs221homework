@@ -5,10 +5,14 @@
 // for CS221-02 
 // Mrs. Delugach
 
+#include "USLList.h"
+#include "Node.h"
+#include "ItemType.h"
+
 USLList::USLList()
 {
-    head = nullPtr;
-    curPos = nullPtr;
+    head = nullptr;
+    curPos = nullptr;
     length = 0;
 }
 
@@ -17,17 +21,18 @@ USLList::~USLList()
     MakeEmpty();
 }
 
-USLList::PutItem(ItemType *newItem)
+bool USLList::PutItem(ItemType *newItem)
 {
-    bool successful = false
-    if (newItem != nullPtr)
+    bool successful = false;
+    if (newItem != nullptr)
     {
         bool itemInList;
-        GetItem(newItem, itemInList)
+        GetItem(newItem, itemInList);
         if (itemInList)
         {
-            newItem->SetNext(head);
-            head = newItem;
+            Node *newNext = new Node(*newItem);
+            newNext->SetNext(head);
+            head = newNext;
             length++;
             successful = true;
         }
@@ -35,29 +40,29 @@ USLList::PutItem(ItemType *newItem)
     return successful;
 }
 
-USLList::GetItem(ItemType *itemToGet, bool &found)
+ItemType *USLList::GetItem(ItemType *itemToGet, bool &found)
 {
 
 }
 
-USLList::DeleteItem(ItemType *itemToDelete)
+bool USLList::DeleteItem(ItemType *itemToDelete)
 {
 
 }
 
-USLList::ResetList()
+void USLList::ResetList()
 {
-    *curPos = head;
+    curPos = head;
 }
 
-USLList::MakeEmpty()
+void USLList::MakeEmpty()
 {
 
 }
 
-USLList::GetNext()
+Node *USLList::GetNext()
 {
-    if (head != nullPtr)
+    if (head != nullptr)
     {
         
     }

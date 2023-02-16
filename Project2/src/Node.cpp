@@ -5,37 +5,40 @@
 // for CS221-02 
 // Mrs. Delugach
 
+#include "Node.h"
+#include "ItemType.h"
+
 Node::Node()
 {
     item = new ItemType;
-    next = nullPtr;
+    next = nullptr;
 }
 
 Node::Node(ItemType newItem)
 {
     item = &newItem;
-    next = nullPtr;
+    next = nullptr;
 }
 
 Node::~Node()
 {
     delete item;
     delete next;
-    item = nullPtr;
-    next = nullPtr;
+    item = nullptr;
+    next = nullptr;
 }
 
-Node::SetNext(Node *nextNode)
+void Node::SetNext(Node *nextNode)
 {
     next = nextNode;
 }
 
-Node::GetItem()
+ItemType Node::GetItem()
 {
     return *item;
 }
 
-Node::Next()
+Node *Node::Next()
 {
     return next;
 }

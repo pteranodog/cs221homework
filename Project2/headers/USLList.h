@@ -12,18 +12,19 @@
 class USLList
 {
 private:
-    Node *head;
-    Node *curPos;
+    Node* head;
+    Node* curPos;
     int length;
+    ItemType* GetItemValidated(ItemType* itemToGet, bool &found);
 
 public:
     USLList();
     ~USLList();
-    bool PutItem(ItemType *newItem);
-    ItemType *GetItem(ItemType *itemToGet, bool &found);
-    bool DeleteItem(ItemType *itemToDelete);
+    bool PutItem(ItemType* newItem);
+    ItemType* GetItem(ItemType* itemToGet, bool &found);
+    bool DeleteItem(ItemType* itemToDelete);
     void ResetList();
     void MakeEmpty();
-    Node *GetNext();
+    Node* GetNext();
     int GetLength();
 };

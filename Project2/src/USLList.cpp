@@ -10,6 +10,8 @@
 #include "ItemType.h"
 #include <iostream>
 
+using namespace std;
+
 USLList::USLList()
 {
     head = nullptr;
@@ -22,118 +24,94 @@ USLList::~USLList()
     MakeEmpty();
 }
 
-bool USLList::PutItem(ItemType *newItem)
+bool USLList::PutItem(ItemType* newItem)
 {
+    bool success = false;
     if (newItem != nullptr)
     {
-        bool itemInList;
-        GetItem(newItem, itemInList);
-        if (!itemInList)
+        // Input item is valid, check if it's in the list already
+        bool itemAlreadyExists;
+        GetItem(newItem, itemAlreadyExists);
+        if (itemAlreadyExists)
         {
-            Node *newNext = new Node(*newItem);
-            newNext->SetNext(head);
-            head = newNext;
-            length++;
-            std::cout << "Item " << head->GetItem().GetData() << " added at " << head << std::endl;
-            return true;
+            // Input item is already in list, add nothing to list
+            cout << "Item " << newItem->GetData() << " is already in list" << endl;
         }
-        std::cout << "Item already in list" << std::endl;
-        return false;
+        else
+        {
+            // Item is not already in list, add item to list
+            Node* newNode = new Node(*newItem);
+            newNode->SetNext(head);
+            head = newNode;
+            length++;
+            success = true;
+            cout << "Added " << newItem->GetData() << " at " << head << endl;
+        }
     }
-    std::cout << "Cannot put item nullptr in list" << std::endl;
-    return false;
+    else
+    {
+        // Input item is null, add nothing to list
+        cout << "Cannot add item \"nullptr\" to list" << endl;
+    }
+    return success;
 }
 
-ItemType *USLList::GetItem(ItemType *itemToGet, bool &found)
+// THIS FUNCTION ASSUMES THE INPUTS HAVE BEEN VALIDATED
+// DO NOT USE WITH UNVALIDATED INPUTS
+ItemType* USLList::GetItemValidated(ItemType* itemToGet, bool &found)
 {
-    std::cout << "Searching... ";
-    found = false;
-    if (itemToGet == nullptr)
-    {
-        std::cout << "Cannot find item nullptr in list" << std::endl;
-        return nullptr;
-    }
+    ItemType* foundItem = nullptr;
     ResetList();
     while (curPos != nullptr)
     {
-        std::cout << curPos->GetItem().GetData() << " ";
-        if (curPos->GetItemPtr() == itemToGet)
+        if (curPos->GetItem().Compare(itemToGet->GetData()) == EQUAL)
         {
+            // Item is found, return item
+            foundItem = new ItemType(curPos->GetItem());
             found = true;
-            std::cout << "Found!" << std::endl;
-            return curPos->GetItemPtr();
-        }
-        curPos = curPos->Next();
-    }
-    std::cout << "Not found" << std::endl;
-    return nullptr;
-}
-
-// This function is very long and complex
-// but there's too many edge cases to handle for it to be short, clear, and elegant
-// Quite unfortunate, really
-bool USLList::DeleteItem(ItemType *itemToDelete)
-{
-    if (itemToDelete == nullptr)
-    {
-        std::cout << "Cannot delete item nullptr" << std::endl;
-        return false;
-    }
-    ResetList();
-    if (curPos == nullptr)
-    {
-        std::cout << "Cannot delete from empty list" << std::endl;
-        return false;
-    }
-    if (curPos->GetItemPtr() == itemToDelete)
-    {
-        if (curPos->Next() == nullptr)
-        {
-            std::cout << "Deleted " << itemToDelete->GetData() << "from " << itemToDelete << std::endl;
-            head = nullptr;
-            delete curPos;
-            curPos = nullptr;
-            length--;
-            return true;
+            break;
         }
         else
         {
-            std::cout << "Deleted " << itemToDelete->GetData() << "from " << itemToDelete << std::endl;
-            head = curPos->Next();
-            delete curPos;
-            curPos = head;
-            length--;
-            return true;
-        }
-    }
-    while (curPos->Next() != nullptr)
-    {
-        if (curPos->Next()->GetItemPtr() == itemToDelete)
-        {
-            if (curPos->Next()->Next() == nullptr)
-            {
-                std::cout << "Deleted " << itemToDelete->GetData() << "from " << itemToDelete << std::endl;
-                delete curPos->Next();
-                curPos->SetNext(nullptr);
-                length--;
-                return true;
-            }
-            else
-            {
-                std::cout << "Deleted " << itemToDelete->GetData() << "from " << itemToDelete << std::endl;
-                Node *nodeToDelete = curPos->Next();
-                curPos->SetNext(curPos->Next()->Next());
-                delete nodeToDelete;
-                length--;
-                return true;
-            }
-        }
-        else
-        {
+            // Item is not found, move to next node
             curPos = curPos->Next();
         }
     }
-    return false;
+    if (!found)
+    {
+
+    }
+    return foundItem;
+}
+
+ItemType* USLList::GetItem(ItemType* itemToGet, bool &found)
+{
+    // Validate inputs and then call GetItemValidated
+    found = false;
+    ItemType* foundItem = nullptr;
+    if (itemToGet != nullptr)
+    {
+        // Input item is valid, check against all list members
+        if (head != nullptr)
+        {
+            // List is not empty, so we can check for the item!
+            foundItem = GetItemValidated(itemToGet, found);
+        }
+        else
+        {
+            // List is empty
+        }
+    }
+    else
+    {
+        // Input item is invalid
+    }
+    return foundItem;
+}
+
+bool USLList::DeleteItem(ItemType *itemToDelete)
+{
+   return false;
 }
 
 void USLList::ResetList()
@@ -143,14 +121,10 @@ void USLList::ResetList()
 
 void USLList::MakeEmpty()
 {
-    while (head != nullptr)
-    {
-        DeleteItem(head->GetItemPtr());
-    }
-    std::cout << "List has been emptied" << std::endl;
+
 }
 
-Node *USLList::GetNext()
+Node* USLList::GetNext()
 {
     if (curPos != nullptr)
     {

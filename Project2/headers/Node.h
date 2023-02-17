@@ -11,15 +11,14 @@
 class Node
 {
 private:
-    ItemType *item;
-    Node *next;
+    ItemType* item;
+    Node* next;
 
 public:
     Node();
     Node(ItemType newItem);
     ~Node();
-    void SetNext(Node *nextNode);
+    void SetNext(Node* nextNode);
     ItemType GetItem();
-    ItemType *GetItemPtr(); // For some reason, everything breaks if this isn't an option. I think it may be due to a conflict between the return type of Node::GetItem and the return type of USLList::GetItem
-    Node *Next();
+    Node* Next();
 };

@@ -4,6 +4,7 @@
 // By Drew Early 
 // for CS221-02 
 // Mrs. Delugach
+
 #include "ItemType.h"
 
 ItemType::ItemType()

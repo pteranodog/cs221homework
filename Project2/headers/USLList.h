@@ -16,6 +16,7 @@ private:
     Node* curPos;
     int length;
     ItemType* GetItemValidated(ItemType* itemToGet, bool &found);
+    bool DeleteItemValidated(ItemType* itemToDelete);
 
 public:
     USLList();
@@ -25,6 +26,7 @@ public:
     bool DeleteItem(ItemType* itemToDelete);
     void ResetList();
     void MakeEmpty();
+    void PrintList();
     Node* GetNext();
     int GetLength();
 };

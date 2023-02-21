@@ -22,7 +22,7 @@ Node::Node(ItemType newItem)
 
 Node::~Node()
 {
-    // This shouldn't be possible but I'm checking anyway
+    // item == nullptr should never be possible but I'm checking anyway
     if (item != nullptr)
     {
         delete item;
@@ -32,14 +32,15 @@ Node::~Node()
 
 void Node::SetNext(Node* nextNode)
 {
-    // Does not check for nulltr
-    // Node::next is allowed to be nullptr
+    // Does not check for nullptr
+    // This is because Node::next is allowed to be nullptr
     next = nextNode;
 }
 
 ItemType Node::GetItem()
 {
     ItemType itemToGet;
+    // item == nullptr should never be possible but I'm checking anyway
     if (item != nullptr)
     {
         itemToGet = *item;
@@ -53,7 +54,7 @@ ItemType Node::GetItem()
 
 Node* Node::Next()
 {
-    // Does not check for nulltr
-    // Node::next is allowed to be nullptr
+    // Does not check for nullptr
+    // This is because Node::next is allowed to be nullptr
     return next;
 }

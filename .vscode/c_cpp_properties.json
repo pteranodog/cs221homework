@@ -3,11 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/Project1/headers",
-                "${workspaceFolder}/Project2/headers",
-                "${workspaceFolder}/Project3/headers",
-                "${workspaceFolder}/Project4/headers",
-                "${workspaceFolder}/Project5/headers"
+                "${workspaceFolder}/Project4/headers"
             ],
             "defines": [
                 "_DEBUG",

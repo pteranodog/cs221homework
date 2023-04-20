@@ -5,6 +5,8 @@
 // for CS221-02 
 // Mrs. Delugach 
 
+#pragma once
+
 class Sort
 {
     private:
@@ -16,4 +18,5 @@ class Sort
         bool GetShowWork();
         virtual void Sorted(int array[], int len) = 0;
         virtual void Print(int array[], int len) = 0;
+        virtual void Print(int array[], int len, bool sortFirst) = 0;
 };

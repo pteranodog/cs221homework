@@ -60,6 +60,7 @@ void Sort2::Sorted(int array[], int len)
 
 void Sort2::Print(int array[], int len)
 {
+    cout << "Quick Sort: ";
     Sorted(array, len);
     for (int i = 0; i < len; i++)
     {

@@ -36,6 +36,7 @@ void Sort1::Sorted(int array[], int len)
 
 void Sort1::Print(int array[], int len)
 {
+    cout << "Bubble Sort: ";
     Sorted(array, len);
     for (int i = 0; i < len; i++)
     {

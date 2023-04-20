@@ -60,6 +60,7 @@ void Sort3::Sorted(int array[], int len)
 
 void Sort3::Print(int array[], int len)
 {
+    cout << "Heap Sort: ";
     Sorted(array, len);
     for (int i = 0; i < len; i++)
     {
